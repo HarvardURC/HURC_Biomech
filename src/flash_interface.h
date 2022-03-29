@@ -12,10 +12,10 @@ typedef enum settingActions {
     DECREMENT = 2
 } settingActions;
 
-uint32_t settingsFlashOffset;
+extern uint32_t settingsFlashOffset;
 
-uint8_t* settingsBuffer;
-uint8_t* flashSettingsTarget;
+extern uint8_t* settingsBuffer;
+extern uint8_t* flashSettingsTarget;
 
 //! \brief Initialize local copy of flash settings
 void flash_init();
