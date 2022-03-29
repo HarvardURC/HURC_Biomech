@@ -15,8 +15,8 @@
 #define ACTUATOR_POSITION_SAMPLES 5
 
 // PWM slice numbers for motor PWM
-uint8_t A_slice_num;
-uint8_t B_slice_num;
+extern uint8_t A_slice_num;
+extern uint8_t B_slice_num;
 
 //! \brief Init actuator interface and set up pins/timers
 void actuator_init();
