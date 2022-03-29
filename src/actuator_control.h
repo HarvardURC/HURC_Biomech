@@ -1,7 +1,7 @@
 #ifndef actuator_control_h
 #define actuator_control_h
 
-uint16_t target_position; // Actuator target position in mm
+extern uint16_t target_position; // Actuator target position in mm
 
 //! \brief Initialize motor controller
 void motorControl_init();
