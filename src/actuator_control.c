@@ -4,6 +4,8 @@
 #include "actuator_control.h"
 #include "actuator_interface.h"
 
+uint16_t target_position; // Actuator target position in mm
+
 void motorControl_init() {
     // Start with position target as 0
     target_position = 0;
