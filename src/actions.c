@@ -16,6 +16,9 @@
 
 // Controller file for interpreting touch events on the touchscreen and calling the necessary function
 
+menuLink* linkStack;
+menuID currentMenu;
+
 void actions_init() {
     // Allocate stack for ten tappable buttons
     linkStack = malloc(sizeof(menuLink) * MAX_LINKS);
