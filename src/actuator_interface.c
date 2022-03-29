@@ -7,6 +7,9 @@
 #include "hardware/i2c.h"
 #include "actuator_interface.h"
 
+uint8_t A_slice_num;
+uint8_t B_slice_num;
+
 void actuator_init() {
     // Set up sensor feedback
     adc_gpio_init(act_FB);
