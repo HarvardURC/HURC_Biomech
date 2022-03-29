@@ -8,6 +8,11 @@
 #include "hardware/sync.h"
 #include "hardware/gpio.h"
 
+uint32_t settingsFlashOffset;
+
+uint8_t* settingsBuffer;
+uint8_t* flashSettingsTarget;
+
 void flash_init() {
     // Offset of settings data 256kfrom start of flash
     settingsFlashOffset = 256 * 1024;
