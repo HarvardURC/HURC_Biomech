@@ -5,9 +5,10 @@
 
 #include "menu_defs.h"
 
-menuLink* linkStack;
+extern menuLink* linkStack;
 
-menuID currentMenu;
+extern menuID currentMenu;
+
 
 void actions_init();
 
