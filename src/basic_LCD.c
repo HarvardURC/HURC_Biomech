@@ -9,6 +9,9 @@
 #include "actions.h"
 #include "flash_interface.h"
 #include "actuator_control.h"
+#include "mutexes.h"
+#include "spilib.h"
+#include "mcp23S08.h"
 
 int main() {
     // Init stdio for debugging purposes, and ensure system clock speed is 130 MHz
@@ -16,6 +19,8 @@ int main() {
     set_sys_clock_khz(130000, true);
 
     // Initialize interfaces, trackers, and controllers
+    init_mutexes();
+    spilib_init();
     LCD_init();
     touch_init();
     actuator_init();

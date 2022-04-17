@@ -22,6 +22,9 @@ add_executable(basic_LCD
     actions.c
     flash_interface.c
     actuator_control.c
+    mcp23S08.c
+    spilib.c
+    mutexes.c
 )
 
 # pico_enable_stdio_usb(basic_LCD 1)
@@ -49,6 +52,8 @@ target_link_libraries(basic_LCD
     hardware_flash
     hardware_sync
     hardware_i2c
+    hardware_spi
+    pico_sync
 )
 
 pico_add_extra_outputs(basic_LCD)
