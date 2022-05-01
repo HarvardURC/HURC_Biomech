@@ -5,11 +5,11 @@
 
 #define LCD_PARALLEL_BASE 0
 
-#define LCD_RST 8
-#define LCD_RD 9 // Read strobe/clock (Active Low)
+#define LCD_RST 1 // LCD Reset, MCP23S08 pin 1
+#define LCD_RD 3 // Read strobe/clock (Active Low), MCP23S08 pin 3
 #define LCD_WR 10 // Write strobe/clock (Active Low)
-#define LCD_CD 11 // Command/Data (Command Low)
-#define LCD_CS 12 // Chip Select (Active Low)
+#define LCD_CD 4 // Command/Data (Command Low), MCP23S08 pin 4
+#define LCD_CS 2 // Chip Select (Active Low), MCP23S08 pin 2
 
 //! \brief Initialize LCD interface state machine and pins, write initialization commands
 void LCD_init();

@@ -5,6 +5,7 @@
 #include "hardware/pio.h"
 #include "basic_LCD.pio.h"
 #include "LCD_interface.h"
+#include "mcp23S08.h"
 
 /* This file implements the low-level interface with the LCD, along with some graphics primitives
 optimized using low-level commands. Higher-level graphics are handled in graphics.c and menu.c.
@@ -19,31 +20,29 @@ void LCD_dat(uint8_t byte) {
 
 void LCD_cmd(uint8_t byte) {
     sleep_us(1);
-    gpio_put(LCD_CD, false);
+    mcpWrite(LCD_CD, false);
     pio_sm_put_blocking(pio, sm, byte); // Write data
     sleep_us(1);
-    gpio_put(LCD_CD, true);
+    mcpWrite(LCD_CD, true);
 }
 
 void LCD_init() {
     // Control Pins
-    gpio_init(LCD_RD);
-    gpio_init(LCD_CD);
     gpio_init(LCD_WR);
-    gpio_init(LCD_CS);
-    gpio_init(LCD_RST);
 
-    gpio_set_dir(LCD_RD, true);
-    gpio_set_dir(LCD_CD, true);
     gpio_set_dir(LCD_WR, true);
-    gpio_set_dir(LCD_CS, true);
-    gpio_set_dir(LCD_RST, true);
 
-    gpio_put(LCD_RST, true);
-    gpio_put(LCD_RD, true);
-    gpio_put(LCD_CD, true);
+    mcpDir(LCD_RD, true);
+    mcpDir(LCD_CD, true);
+    mcpDir(LCD_CS, true);
+    mcpDir(LCD_RST, true);
+
     gpio_put(LCD_WR, true);
-    gpio_put(LCD_CS, true);
+
+    mcpWrite(LCD_RST, true);
+    mcpWrite(LCD_RD, true);
+    mcpWrite(LCD_CD, true);
+    mcpWrite(LCD_CS, true);
 
     pio = pio0;
 
@@ -55,7 +54,7 @@ void LCD_init() {
     // Power on LCD after waiting a bit
     sleep_ms(5);
 
-    gpio_put(LCD_CS, false); // Select LCD
+    mcpWrite(LCD_CS, false); // Select LCD
     LCD_cmd(0x01); // Software reset
     sleep_us(50);
     LCD_cmd(0x28); // Display off

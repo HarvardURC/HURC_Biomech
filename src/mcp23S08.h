@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#define mcp23S08_CS 13
+#define mcp23S08_CS 9
 
 //! \brief Select IO expander via SPI
 void mcp1Select();

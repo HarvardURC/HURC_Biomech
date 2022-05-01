@@ -21,6 +21,7 @@ int main() {
     // Initialize interfaces, trackers, and controllers
     init_mutexes();
     spilib_init();
+    mcp23S08_init();
     LCD_init();
     touch_init();
     actuator_init();
